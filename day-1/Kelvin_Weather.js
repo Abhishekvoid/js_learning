@@ -1,6 +1,7 @@
 // declare a variable name kelvin and assign value 293 
 const kelvin = 293;
 console.log(`The temperature is ${kelvin} degrees celsius`)
+
 //  declare a variable name celsius and assign value by sub kelvin with 273
 let celsius;
 celsius = kelvin - 273;
