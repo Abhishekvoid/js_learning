@@ -3,6 +3,11 @@ let raceNumber = Math.floor(Math.random() * 1000);
 let RegisterEarly = true;
 const runnerAge = 20;
 
+if (runnerAge && RegisterEarly) {
+    console.log(`As per information you provide your age is ${runnerAge} and you RegisterEarly`);
+    console.log("here is your details, Thankyou for participating:)")
+}
+
 if ( runnerAge >= 18 && RegisterEarly){
    raceNumber += 1000;
 }
