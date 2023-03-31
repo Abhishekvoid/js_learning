@@ -61,3 +61,13 @@ const result = getFahrenheit(15);
 console.log(result);
 const result2 = multiplyByNineFifths(5);
 console.log(result2);
+
+//function expression
+const plantNeedsWater = day => (day === 'Wednesday' ? true : false);
+
+console.log(plantNeedsWater('Tuesday'))
+
+//Concise Body Arrow Functions
+
+const plantNeedsWater_ = day => (day === 'Wednesday' ? true : false);
+console.log(plantNeedsWater_('Wednesday'))
