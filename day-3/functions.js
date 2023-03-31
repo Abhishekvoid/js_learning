@@ -63,11 +63,18 @@ const result2 = multiplyByNineFifths(5);
 console.log(result2);
 
 //function expression
-const plantNeedsWater = day => (day === 'Wednesday' ? true : false);
 
+const plantNeedsWater = function(day){
+    if (day === 'Wednesday'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 console.log(plantNeedsWater('Tuesday'))
 
 //Concise Body Arrow Functions
 
-const plantNeedsWater_ = day => (day === 'Wednesday' ? true : false);
+const plantNeedsWater_ = (day) => (day === 'Wednesday' ? true : false);
 console.log(plantNeedsWater_('Wednesday'))
