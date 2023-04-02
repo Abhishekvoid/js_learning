@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+	<h1>Rock Paper Scissors</h1>
+	<p>Click the button to start the game:</p>
+	<button onclick="playGame()">Play</button>
+	<p id="result"></p>
+
+	<script>
+		// JavaScript code for the game goes here
+		// Computer choice function
+		function computerChoice(){
+			const choices = ['rock', 'paper', 'scissors'];
+			const randomIndex = Math.floor(Math.random() * choices.length);
+			return choices[randomIndex];
+		}
+
+		// User choice function
+		function userChoice(){
+			let choice = prompt('Choose rock, paper, or scissors:');
+			console.log('User choice:', choice);
+			choice = choice.toLowerCase().trim();
+			if (choice !== 'rock' && choice !== 'paper' && choice !== 'scissors'){
+				alert('Invalid choice! Please choose again.');
+				return userChoice();
+			}
+			return choice;
+		}
+
+		// Determine winner function
+		function determineWinner(user, computer){
+			if(user === computer){
+				return "It's a tie!";
+			}
+			else if ((user == 'rock' && computer == 'scissors') ||
+					(user == 'paper' && computer == 'rock') ||
+					(user == 'scissors' && computer == 'paper')){
+						return 'You win!';
+					}
+					else{
+						return 'Computer wins';
+					}
+
+		}
+
+		// Play game function
+		function playGame(){
+			const user = userChoice();
+			const computer = computerChoice();
+			const result = determineWinner(user, computer);
+			document.getElementById("result").innerHTML = `You chose ${user}. Computer chose ${computer}. ${result}`;
+		}
+	</script>
+</body>
+</html>
