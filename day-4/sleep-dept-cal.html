@@ -1,0 +1,48 @@
+<!-- // Get the user input
+let principal = parseFloat(prompt("Enter the principal amount:"));
+let interestRate = parseFloat(prompt("Enter the interest rate (% per year):"));
+let term = parseInt(prompt("Enter the term (in years):"));
+
+// Calculate the total amount of debt
+let totalDebt = principal * (1 + (interestRate / 100) * term);
+
+// Calculate the interest to be paid
+let interest = totalDebt - principal;
+
+// Display the results
+console.log(`The total amount of debt is: $${totalDebt.toFixed(2)}`);
+console.log(`The interest to be paid is: $${interest.toFixed(2)}`); -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Debt Calculator</title>
+</head>
+<body>
+	<h1>Debt Calculator</h1>
+	<label for="amount">Amount Owed:</label>
+	<input type="number" id="amount" name="amount"><br><br>
+	<label for="interest">Interest Rate (APR):</label>
+	<input type="number" id="interest" name="interest"><br><br>
+	<label for="payment">Monthly Payment:</label>
+	<input type="number" id="payment" name="payment"><br><br>
+	<button onclick="calculateDebt()">Calculate</button>
+	<br><br>
+	<p id="result"></p>
+
+	<script>
+		function calculateDebt() {
+			let amount = parseFloat(document.getElementById("amount").value);
+			let interest = parseFloat(document.getElementById("interest").value) / 100 / 12;
+			let payment = parseFloat(document.getElementById("payment").value);
+
+			let months = Math.log(payment / (payment - interest * amount)) / Math.log(1 + interest);
+			let years = Math.floor(months / 12);
+			months = Math.round(months % 12);
+
+			let result = `It will take ${years} years and ${months} months to pay off your debt.`;
+			document.getElementById("result").innerHTML = result;
+		}
+	</script>
+</body>
+</html>
