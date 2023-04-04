@@ -75,6 +75,21 @@ const plantNeedsWater = function(day){
 console.log(plantNeedsWater('Tuesday'))
 
 //Concise Body Arrow Functions
-
 const plantNeedsWater_ = (day) => (day === 'Wednesday' ? true : false);
 console.log(plantNeedsWater_('Wednesday'))
+
+function dream_car(theCar){
+    theCar.make('supra');
+}
+
+const mycar ={
+  make : 'mustang_mach-1',
+  model : '1998-Mach-1',
+  yearn: 1998,
+}
+
+const x = mycar.make;
+
+dream_car(mycar);
+
+const y = mycar.make;
