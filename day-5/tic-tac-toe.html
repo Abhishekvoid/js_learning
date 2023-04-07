@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: 20px auto;
+      }
+      td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 36px;
+        cursor: pointer;
+      }
+      .player1 {
+        color: blue;
+      }
+      .player2 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td id="0"></td>
+        <td id="1"></td>
+        <td id="2"></td>
+      </tr>
+      <tr>
+        <td id="3"></td>
+        <td id="4"></td>
+        <td id="5"></td>
+      </tr>
+      <tr>
+        <td id="6"></td>
+        <td id="7"></td>
+        <td id="8"></td>
+      </tr>
+    </table>
+    <p id="message">Player 1's turn</p>
+    <script>
+      let player = 1;
+      const board = ['', '', '', '', '', '', '', '', ''];
+      const cells = document.querySelectorAll('td');
+      const message = document.getElementById('message');
+      const winningCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+      ];
+
+      cells.forEach(cell => cell.addEventListener('click', handleClick));
+
+      function handleClick() {
+        const cell = event.target;
+        const index = cell.id;
+        if (board[index] !== '') return;
+        board[index] = player === 1 ? 'X' : 'O';
+        cell.textContent = board[index];
+        cell.classList.add(`player${player}`);
+        if (checkWin()) {
+          message.textContent = `Player ${player} wins!`;
+          cells.forEach(cell => cell.removeEventListener('click', handleClick));
+          return;
+        }
+        if (checkTie()) {
+          message.textContent = "It's a tie!";
+          return;
+        }
+        player = player === 1 ? 2 : 1;
+        message.textContent = `Player ${player}'s turn`;
+      }
+
+      function checkWin() {
+        return winningCombos.some(combo => {
+          return combo.every(index => {
+            return board[index] === (player === 1 ? 'X' : 'O');
+          });
+        });
+      }
+
+      function checkTie() {
+        return board.every(cell => {
+          return cell !== '';
+        });
+      }
+    </script>
+  </body>
+</html>
